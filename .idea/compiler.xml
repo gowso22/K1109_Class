@@ -3,7 +3,6 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="K1109_Class.mytest1.myapplication" target="11" />
-      <module name="K1109_Class.mytest1.test0221" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
