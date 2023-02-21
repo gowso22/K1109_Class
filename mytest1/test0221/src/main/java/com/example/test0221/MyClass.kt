@@ -35,14 +35,7 @@ class User(val name:String, val age:Int){
 }
 
 
-fun main(){
-    var user = User("kk", 10)
 
-    user.someFun()
-
-    var user01 = User01("K404", 10, 123)
-
-}
 
 // 주생성자와 보조생성자가 같이 있다면
 // 보조생성자에서 주생성자로 연결한다.
@@ -56,6 +49,7 @@ class User01(name:String, age: Int, phone : Int){
 }
 
 // 상속
+// 상속의 이점은 상위 클래스에 정의된 멤버(변수, 함수)를 하위 클래스에서 자신의 멤버처럼 사용할 수 있는 것
 // 클래스 선언부 콜론 뒤에 부모클래스를 작성
 // 주의) 코틀린에서는 open이라는 키워드를 사용해야. 상속이 가능합니다.
 
@@ -67,9 +61,69 @@ class Sub : Super{
     constructor(name: String) : super(name)
 }
 
+open class Super2(name : String){  // open 키워드 사용
+    var superData = 10
+
+    fun someFun(){
+        println("super Class")
+    }
+}
+
+class Sub2 : Super2{
+    constructor(name: String) : super(name)
+}
+// 접근제한자
+// 기본 public
+// public, private, protected, internal
+// 예) open class Super{
+// var superData01 = 10
+// protected var superData02 = 10
+// private var superData03 = 10
+// }
+// class Sub : Super(){
+// fun subFun(){
+// superData01++
+// superData02++
+// superData03++
+//  }
+//}
+ open class Super12{
+ var superData01 = 10
+ protected var superData02 = 10
+ private var superData03 = 10
+ }
+ class Sub12 : Super12(){
+ fun subFun(){
+ superData01++ // public
+ superData02++ // protected
+// superData03++ // private
+  }
+}
+// 데이터클래스
+// data라는 키워드를 사용.
+// 비교, 출력시 해당 데이터를 처리한다. (메모리 위치의 주소값이 아니라.)
+// 예시) class NonDataCl(val name : String, val age : Int)
+//       data DataCl(val name : String, val age : Int)
+
+fun main(){
+    var obj = Sub2("nam")
+    println(obj.superData)
 
 
+    var user = User("kk", 10)
 
+    user.someFun()
+
+    var user01 = User01("K404", 10, 123)
+
+    //접근제한자
+    println()
+    var obj00 = Sub12()
+    println(obj00.superData01)
+    //obj00.superData02;
+    //obj00.superData03;
+
+}
 
 
 
